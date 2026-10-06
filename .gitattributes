@@ -1,0 +1,17 @@
+# 统一换行符, 避免 Windows 上 clone 出 CRLF 造成 diff 噪音
+* text=auto eol=lf
+
+*.md       text eol=lf
+*.cjs      text eol=lf
+*.mjs      text eol=lf
+*.json     text eol=lf
+*.ets      text eol=lf
+*.kt       text eol=lf
+*.swift    text eol=lf
+*.wxss     text eol=lf
+*.css      text eol=lf
+*.html     text eol=lf
+*.xml      text eol=lf
+*.png      binary
+*.jpg      binary
+*.pdf      binary

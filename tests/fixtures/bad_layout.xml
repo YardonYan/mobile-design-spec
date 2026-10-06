@@ -1,0 +1,4 @@
+<!-- 预期命中: android-px, android-font-unit -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android">
+  <TextView android:layout_width="100px" android:textSize="14dp"/>
+</LinearLayout>

@@ -1,0 +1,12 @@
+node_modules/
+npm-debug.log*
+package-lock.json
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 本地编辑器与工具目录
+.vscode/
+.idea/
+.qoder/

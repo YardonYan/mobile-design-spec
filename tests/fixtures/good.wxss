@@ -1,0 +1,4 @@
+/* 预期零命中 */
+.page { padding: 32rpx; }
+.submit-btn { min-height: 88rpx; font-size: 30rpx; line-height: 1.6; }
+.tabbar { position: fixed; bottom: 0; height: 100rpx; padding-bottom: env(safe-area-inset-bottom); }

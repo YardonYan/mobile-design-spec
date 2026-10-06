@@ -1,0 +1,4 @@
+/* 预期命中: touch-target, page-padding, line-height */
+.container { padding: 0 12px; }
+.icon-btn { height: 24px; }
+.article { font-size: 15px; line-height: 18px; }

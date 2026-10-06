@@ -1,0 +1,5 @@
+/* 预期命中: font-min, touch-target, page-padding, wxss-unit, safe-area-bottom */
+.page { padding: 20rpx 24rpx; }
+.submit-btn { height: 80rpx; font-size: 20rpx; }
+.cell { height: 40px; }
+.tabbar { position: fixed; bottom: 0; height: 100rpx; }
