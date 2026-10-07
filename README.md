@@ -1,12 +1,21 @@
-# mobile-design-spec
+<div align="center">
 
-<p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License MIT"></a>
-  <img src="https://img.shields.io/badge/依赖-0-brightgreen.svg" alt="Zero dependencies">
-  <img src="https://img.shields.io/badge/Node-%3E%3D18-339933.svg" alt="Node >= 18">
-  <img src="https://img.shields.io/badge/平台-iOS%20·%20Android%20·%20HarmonyOS%20·%20小程序%20·%20H5-blue.svg" alt="5 platforms">
-  <img src="https://img.shields.io/badge/数据基准-2026--10-informational.svg" alt="Data baseline 2026-10">
-</p>
+<img src="assets/hero.png" alt="mobile-design-spec — 一套 Skill，搞定五套移动端尺寸规范" width="100%">
+
+**一套 Skill，搞定五套移动端尺寸规范**
+
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![依赖](https://img.shields.io/badge/依赖-0-brightgreen.svg)](#30-秒上手)
+[![Node](https://img.shields.io/badge/Node-%3E%3D18-339933.svg)](package.json)
+[![平台](https://img.shields.io/badge/平台-iOS%20·%20Android%20·%20HarmonyOS%20·%20小程序%20·%20H5-blue.svg)](#覆盖范围)
+[![数据基准](https://img.shields.io/badge/数据基准-2026--10-informational.svg)](#数据基准与时效性)
+[![Tests](https://img.shields.io/badge/tests-15%20passing-brightgreen.svg)](#测试与-ci)
+
+**中文** · [English](README.en.md)
+
+</div>
+
+---
 
 > 让 AI 编码助手按 Apple HIG、Material Design 3、HarmonyOS Design、微信小程序文档和 WCAG 的公开数值，直接改对移动端与响应式代码里的尺寸，并说得出每一条改动的依据。
 
@@ -15,12 +24,14 @@ A Qoder / Claude Code Skill that applies real mobile sizing specs (iOS, Android,
 ## 目录
 
 - [解决什么问题](#解决什么问题)
+- [工作方式](#工作方式)
 - [覆盖范围](#覆盖范围)
+- [五套单位对照](#五套单位对照)
 - [30 秒上手](#30-秒上手)
 - [安装](#安装)
 - [怎么调用](#怎么调用)
 - [走查规则清单](#走查规则清单)
-- [时效性：当前收录的最新机型](#时效性当前收录的最新机型)
+- [数据基准与时效性](#数据基准与时效性)
 - [机型为什么是这几台](#机型为什么是这几台)
 - [数据来自哪里](#数据来自哪里)
 - [项目结构](#项目结构)
@@ -49,6 +60,12 @@ submit-btn 高度 72rpx → 88rpx   依据: 小程序最小触控 88 x 88rpx (�
 Text fontSize '16vp' → 16       依据: 鸿蒙 fp 才跟随 Configuration.fontSizeScale 缩放
 ```
 
+## 工作方式
+
+<img src="assets/architecture.png" alt="SKILL.md 常驻上下文，reference 按需加载" width="100%">
+
+SKILL.md 是常驻上下文的决策入口（约 150 行），负责判定平台、查跨平台速查表、套用硬性红线；八份 reference 只在实际需要时读进来——这是 Skill 相比长文档的核心优势。两个脚本不经 LLM，可以直接在命令行执行。
+
 ## 覆盖范围
 
 | 形态 | 平台 | 关键数值 |
@@ -60,6 +77,16 @@ Text fontSize '16vp' → 16       依据: 鸿蒙 fp 才跟随 Configuration.font
 | 客厅与空间计算 | tvOS、visionOS | tvOS 内容内缩上下 60 左右 80pt、visionOS 可点 60pt |
 | 穿戴 | watchOS、鸿蒙穿戴 | 相对缩放 90% ~ 119%、穿戴边距 26vp |
 | Web | 移动优先 + 桌面断点 | Tailwind / Bootstrap / MDC 三套实际阈值 |
+
+## 五套单位对照
+
+<img src="assets/unit-map.png" alt="iOS pt / Android dp / HarmonyOS vp / 小程序 rpx / H5 px 的换算关系" width="100%">
+
+同一份设计稿换到不同平台，基准屏宽和单位都不一样。`convert.cjs` 做等比映射并给出取整建议与切图物理像素，下面这组最常用的触控下限关系可以直接记：
+
+```
+44 pt  ≈  48 dp  ≈  48 vp  ≈  88 rpx  ≈  44 px
+```
 
 ## 30 秒上手
 
@@ -132,6 +159,8 @@ $ node scripts/convert.cjs 88rpx --to pt,dp,vp
 
 规范走查，支持 `.css .scss .less .wxss .html .vue .swift .kt .ets .xml`：
 
+<img src="assets/audit-preview.png" alt="audit.cjs 的走查输出示例" width="100%">
+
 ```console
 $ node scripts/audit.cjs detail.wxss index.html
 
@@ -172,7 +201,7 @@ index.html
 
 走查是启发式的第一遍过滤：它按选择器名猜"可点元素"和"页面容器"，会有漏报和误报，不替代读代码。
 
-## 时效性：当前收录的最新机型
+## 数据基准与时效性
 
 数据基准 **2026-10-07**，已收录各家最新一代：
 
@@ -193,6 +222,8 @@ index.html
 同时反映了几处规范变动：iOS 26 抬高灵动岛机型顶部安全区（59 → 62pt）、Apple HIG 不再给 iOS 端固定导航栏高度、Material 3 顶栏 56dp → 64dp、微信小程序官方口径改为优先推荐 vw、Android 16 起边到边不可关闭、Android targetSdk 36 起 ≥600dp 强制可缩放。
 
 更新策略：新机型发布后按官方规格页复核，每个 reference 末尾都标了抓取日期。历史 issue 里最常见的请求是"某机型参数过期"，欢迎直接提。
+
+数据基准日期同时出现在 README、SKILL.md 和每个 reference 末尾，更新时需一并修改。
 
 ## 机型为什么是这几台
 
@@ -226,14 +257,14 @@ index.html
 
 已修正的上游错误记录在 `ios.md` 和 `miniprogram.md` 的勘误小节，包括 iPhone 15 Plus 的逻辑尺寸（428 x 926 → 430 x 932）、微信 TabBar 图标单位（rpx → px）、Material 2 的 56dp 顶栏。
 
-完整来源清单和抓取日期在每个 reference 末尾。
-
 ## 项目结构
 
 ```
 mobile-design-spec/
 ├── SKILL.md                    决策入口: 平台判定、跨平台速查表、硬性红线
-├── README.md  LICENSE  package.json
+├── README.md  README.en.md  LICENSE  package.json
+├── assets/                     README 配图
+├── tools/                      配图生成脚本, 可重新生成 assets
 ├── references/                 按需加载, 每份带来源与抓取日期
 │   ├── devices.md              逐机型参数表 + 机型选取依据
 │   ├── multi-device.md         平板 / macOS / visionOS / watchOS / tvOS / Chromebook / 鸿蒙 PC
