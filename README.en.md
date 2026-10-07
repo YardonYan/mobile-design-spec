@@ -4,7 +4,7 @@
 
 **One skill for five mobile sizing systems**
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](#quick-start)
 [![Node](https://img.shields.io/badge/Node-%3E%3D18-339933.svg)](package.json)
 [![Platforms](https://img.shields.io/badge/platforms-iOS%20·%20Android%20·%20HarmonyOS%20·%20Mini%20Program%20·%20H5-blue.svg)](#coverage)
@@ -331,4 +331,8 @@ Data change workflow: update the relevant reference and its source date → sync
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Copyright in the specification values belongs to the original sources: Apple, Google, Huawei, Tencent, W3C and MDN. This repository only organises them and implements the conversion.
+**Apache-2.0** — see [LICENSE](LICENSE). Copyright in the specification values belongs to the original sources: Apple, Google, Huawei, Tencent, W3C and MDN. This repository only organises them and implements the conversion.
+
+> **Licence change**: this repository was previously MIT. It moved to Apache-2.0 on 2026-10-08 to match the author's other skill repositories. Compared with MIT, Apache-2.0 adds an explicit patent grant and requires modified files to carry notices of change.
+>
+> The change applies to new versions only — copies distributed before it remain under MIT.

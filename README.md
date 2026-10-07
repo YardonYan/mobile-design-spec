@@ -4,7 +4,7 @@
 
 **一套 Skill，搞定五套移动端尺寸规范**
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![依赖](https://img.shields.io/badge/依赖-0-brightgreen.svg)](#30-秒上手)
 [![Node](https://img.shields.io/badge/Node-%3E%3D18-339933.svg)](package.json)
 [![平台](https://img.shields.io/badge/平台-iOS%20·%20Android%20·%20HarmonyOS%20·%20小程序%20·%20H5-blue.svg)](#覆盖范围)
@@ -329,4 +329,8 @@ jobs:
 
 ## 许可
 
-MIT，见 [LICENSE](LICENSE)。规范数值版权归 Apple、Google、Huawei、Tencent、W3C、MDN 各原始来源所有，本仓库只做整理与换算实现。
+**Apache-2.0**，见 [LICENSE](LICENSE)。规范数值版权归 Apple、Google、Huawei、Tencent、W3C、MDN 各原始来源所有，本仓库只做整理与换算实现。
+
+> **协议变更**：本仓库此前使用 MIT，已于 2026-10-08 改为 Apache-2.0，与作者其余技能仓库保持一致。相比 MIT，Apache-2.0 额外提供了明确的专利授权，并要求对修改过的文件作出说明。
+>
+> 变更仅对新版本生效，此前分发的副本仍按 MIT 授权。

@@ -2,7 +2,7 @@
   "name": "mobile-design-spec",
   "version": "1.0.0",
   "description": "把 iOS、Android、HarmonyOS、微信小程序、H5 五套移动端尺寸规范落到代码里，附带单位换算与规范走查脚本",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "scripts": {
     "test": "node scripts/selftest.mjs",
     "convert": "node scripts/convert.cjs",
