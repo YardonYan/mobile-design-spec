@@ -1,17 +1,20 @@
 {
   "name": "mobile-design-spec",
-  "version": "1.0.0",
+  "displayName": "mobile-design-spec",
   "description": "把 iOS、Android、HarmonyOS、微信小程序、H5 五套移动端尺寸规范落到代码，并覆盖平板、折叠屏、桌面、车机与大屏等扩展形态。",
+  "version": "1.0.0",
   "author": {
     "name": "Yardon",
     "url": "https://github.com/YardonYan"
   },
-  "license": "Apache-2.0",
   "homepage": "https://github.com/YardonYan/mobile-design-spec",
   "repository": "https://github.com/YardonYan/mobile-design-spec",
+  "license": "Apache-2.0",
   "keywords": [
     "agent-skill",
     "ai-skill",
     "mobile-design-spec"
-  ]
+  ],
+  "skills": "./",
+  "hooks": {}
 }
