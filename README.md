@@ -34,9 +34,11 @@ A Qoder / Claude Code Skill that applies real mobile sizing specs (iOS, Android,
 - [数据基准与时效性](#数据基准与时效性)
 - [机型为什么是这几台](#机型为什么是这几台)
 - [数据来自哪里](#数据来自哪里)
+- [数据文件与溯源](#数据文件与溯源)
 - [项目结构](#项目结构)
 - [测试与 CI](#测试与-ci)
 - [已知局限](#已知局限)
+- [排错](#排错)
 - [贡献](#贡献)
 - [许可](#许可)
 
@@ -101,6 +103,28 @@ node scripts/audit.cjs 你的样式目录
 要在 agent 里用，把整个目录放进它的 skills 目录，见下一节。
 
 ## 安装
+
+### 用安装器（推荐）
+
+仓库自带一个零依赖的安装脚本，把它装到本机各个 AI 应用的 skills 目录，不需要手工拷贝：
+
+```bash
+node tools/install.mjs --list                 # 看有哪些目标可选
+node tools/install.mjs --ai workbuddy         # 装到 WorkBuddy
+node tools/install.mjs --ai workbuddy --ai trae-cn --ai codebuddy   # 一次装多个
+node tools/install.mjs --ai all               # 装到全部目标
+node tools/install.mjs --ai all --dry-run     # 只预览，不写文件
+node tools/install.mjs --ai all --force       # 覆盖已存在的旧版本
+node tools/install.mjs --ai workbuddy --uninstall   # 卸载
+```
+
+已核对存在的目标：WorkBuddy、TRAE 国内版、CodeBuddy、Claude Code、Codex CLI、OpenClaw、Qwen Code、cc-switch。`cursor` 与通用 `.agents` 用的是通行约定，未在本机核对。
+
+加 `--project` 改为装进当前项目的相对目录（如 `.workbuddy/skills`），适合随项目一起提交的用法。
+
+安装器只依赖 Node 标准库，会跳过 `.git`、`node_modules`、缓存等目录；装之前先检查 `SKILL.md` 是否在仓库根目录，不在就报错退出。
+
+### 手工安装
 
 | 环境 | 做法 |
 | --- | --- |
@@ -257,6 +281,60 @@ index.html
 
 已修正的上游错误记录在 `ios.md` 和 `miniprogram.md` 的勘误小节，包括 iPhone 15 Plus 的逻辑尺寸（428 x 926 → 430 x 932）、微信 TabBar 图标单位（rpx → px）、Material 2 的 56dp 顶栏。
 
+## 数据文件与溯源
+
+除了给人看的 `references/`，仓库还有一层给机器读的数据：`data/` 下的 CSV，和记录来源与时效的 `provenance.json`。
+
+### data/ 是怎么来的
+
+**CSV 不是手工维护的，由脚本从 `references/` 生成。** 数字只应该有一个来源，手工同步两份数据迟早会漂移。
+
+```bash
+npm run data          # 从 references/*.md 的表格重新生成 data/*.csv
+npm run data:check    # 只校验两者是否一致，有差异退出码 1
+```
+
+| 文件 | 内容 | 行数 |
+| --- | --- | --- |
+| `devices-iphone.csv` | iPhone 逐机型参数 | 19 |
+| `devices-ipad.csv` | iPad 逐机型参数 | 5 |
+| `devices-android.csv` | Android 逐设备参数 | 20 |
+| `devices-harmonyos.csv` | 鸿蒙逐机型参数 | 18 |
+| `baselines.csv` | 五平台设计稿基准 | 5 |
+| `device-selection-basis.csv` | 机型为什么选这几台 | 5 |
+
+每行都带一个稳定业务键 `id`（由机型名生成）和一个 `status` 列：
+
+| status | 含义 | 来自原文的标记 |
+| --- | --- | --- |
+| `official` | 官方表格直接给出 | 无标记 |
+| `measured` | 真机实测 | `实测` |
+| `derived` | 由分辨率除密度算出 | `推算` |
+| `unverified` | 单一来源或社区数据，用前需真机复核 | `未验证` |
+| `not-found` | 官方当前查不到 | `未查到` / `未收录` / `未公布` |
+
+### 时效 SLA
+
+数据会过期，靠人记得不可靠。`data/provenance.json` 给每条数据记了来源、核验日期和复核期限：
+
+| 分档 | 期限 | 适用范围 |
+| --- | --- | --- |
+| `officialSpec` | 365 天 | 官方规格页与官方设计文档 |
+| `distributionStats` | 90 天 | 第三方分布统计，季度会变 |
+| `communitySource` | 30 天 | 社区或单一来源，随时可能失效 |
+
+检查命令：
+
+```bash
+npm run provenance:check           # 报告每条的年龄与剩余天数
+npm run provenance:check -- --json # 机器可读，供定时任务用
+npm run data:verify                # 一次跑完上面三项校验，可直接用于 CI
+```
+
+有数据过期时退出码为 1。复核后更新 `references/` 里对应小节的日期，再重跑 `npm run data && npm run provenance` 即可。
+
+`provenance.json` 同样由脚本生成（`npm run provenance`），不手工编辑。
+
 ## 项目结构
 
 ```
@@ -264,7 +342,16 @@ mobile-design-spec/
 ├── SKILL.md                    决策入口: 平台判定、跨平台速查表、硬性红线
 ├── README.md  README.en.md  LICENSE  package.json
 ├── assets/                     README 配图
-├── tools/                      配图生成脚本, 可重新生成 assets
+├── data/                       机器可读数据, 由 references 生成, 不手工编辑
+│   ├── devices-*.csv           四平台逐机型参数
+│   ├── baselines.csv           五平台设计稿基准
+│   ├── device-selection-basis.csv  机型选取依据
+│   └── provenance.json         来源、核验日期与时效 SLA
+├── tools/
+│   ├── install.mjs             装到本机各 AI 应用的 skills 目录
+│   ├── build_data.mjs          references → data/*.csv
+│   ├── build_provenance.mjs    references → provenance.json
+│   └── gen_readme_images.py    生成 assets 配图
 ├── references/                 按需加载, 每份带来源与抓取日期
 │   ├── devices.md              逐机型参数表 + 机型选取依据
 │   ├── multi-device.md         平板 / macOS / visionOS / watchOS / tvOS / Chromebook / 鸿蒙 PC
@@ -273,6 +360,7 @@ mobile-design-spec/
 ├── scripts/
 │   ├── convert.cjs             跨平台换算 + 切图倍率
 │   ├── audit.cjs               规范走查, 16 类规则
+│   ├── check_provenance.mjs    时效检查
 │   └── selftest.mjs            回归测试
 └── tests/fixtures/             走查规则的正反例
 ```
@@ -305,7 +393,10 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: node scripts/audit.cjs src/   # 有 ERROR 时退出码 1, 直接卡住 PR
+      - run: npm run data:verify           # data/ 与 references/ 漂移、或数据过期时卡住 PR
 ```
+
+`data:verify` 会把三件事一次查完：CSV 与 `references/` 是否一致、`provenance.json` 是否与 `references/` 一致、有没有数据超过复核期限。三条里任何一条不过就退出码 1。
 
 ## 已知局限
 
@@ -314,6 +405,73 @@ jobs:
 - 鸿蒙智慧屏与穿戴、鸿蒙 PC 窗口上下限、iPad 侧栏宽度、macOS 最小窗口尺寸，官方当前查不到数值，本仓库只列了查不到这件事。
 - 微信小程序在鸿蒙上由 ArkWeb 渲染，与 Skyline 的 CSS 支持面不同，跨渲染器的差异只列了已知部分。
 - 机型表是 2026-10 的快照，之后需要复核。
+
+时效检查（`npm run provenance:check`）会算出下面这些，这里如实列出而不是藏起来：
+
+- `references/h5.md` 的来源小节里最近一个日期是 2025-09-15，已超过 90 天的复核期限。H5 的断点与字号数值来自 MDN 与 WCAG，这两处的口径本身变化很慢，但来源标注确实该更新了。
+- `references/code-patterns.md` 没有「## 来源」小节，时效无法自动判定。它列的是各技术栈的写法对照，属于经验性内容而非官方数值，所以当初没标来源，但缺了来源就进不了溯源链路。
+
+这两项都没有被"修好"——补日期需要有真实的复核动作，不能改个数字让它变绿。
+
+## 排错
+
+### 装好了但对话里没反应
+
+按顺序查三件事：
+
+一、**`SKILL.md` 是否在技能目录的根层。** 正确结构是 `<应用技能目录>/mobile-design-spec/SKILL.md`。如果 clone 或解压后多套了一层（变成 `mobile-design-spec/mobile-design-spec/SKILL.md`），应用扫不到。
+
+二、**重启应用。** 多数应用只在启动时扫描技能目录，装完不重启不生效。
+
+三、**确认目录是该应用真正会扫的那个。** 跑 `node tools/install.mjs --list` 看清单，标「已在本机核对」的是确认过存在的。
+
+### `git clone` 或解压后多了一层目录
+
+在已有同名目录里执行 clone 就会这样。用安装器可以跳过这一步：
+
+```bash
+node tools/install.mjs --ai workbuddy
+```
+
+它会自己处理层级和目标目录名，不需要手工裁剪。
+
+### 安装脚本报「仓库根目录下找不到 SKILL.md」
+
+安装器在拷贝前会做这项检查，因为多数 AI 应用只认「技能目录/SKILL.md」这一种结构。看到这个报错说明执行位置不对——脚本要在仓库根目录运行，它会自己定位 `SKILL.md`。
+
+### `npm test` 报 `spawnSync ... EBUSY`
+
+```
+error: 'spawnSync C:\...\node.exe EBUSY'
+code: 'EBUSY'
+```
+
+自测脚本会派生子进程去跑 `convert.cjs` 和 `audit.cjs`，在受限的执行环境（例如沙箱化的命令通道）里会被拒绝。这不是代码问题。想确认仓库是否健康，直接调两个子命令：
+
+```bash
+node scripts/convert.cjs 16pt                     # 应输出多平台换算结果
+node scripts/audit.cjs tests/fixtures/bad.css     # 应报 3 条 WARN
+```
+
+这两条能出结果，就说明仓库是好的，只是当前环境不许它 fork 子进程。
+
+### `audit.cjs` 返回退出码 1，是崩了吗
+
+不是。退出码 1 表示扫到了 ERROR 级问题，这是给 CI 用的约定，故意卡住 PR。只有 ERROR 会让退出码变 1，`warn` 和 `info` 不会。
+
+### 换算结果和设计稿对不上
+
+换算以源设计稿宽度为基准，默认按 iOS 402 算。设计稿不是这个宽度，结果就会整体偏移。用 `--from-width` 覆盖：
+
+```bash
+node scripts/convert.cjs 16pt --from-width 375
+```
+
+也可以用 `--ios-width`、`--android-width`、`--mp-width`、`--h5-width` 分别覆盖某个平台的基准宽。
+
+### 走查没报问题，但肉眼看着不对
+
+走查是启发式的，靠选择器名猜语义，命名不规范的代码会漏；它也不做视觉判断，看不出「间距够不够」这类需要眼睛的问题。这种情况走查结果只能当参考，以人工核对为准。
 
 ## 贡献
 

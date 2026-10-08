@@ -1,0 +1,19 @@
+id,机型,物理 (px),vp 宽 x 高,px/vp 比,status,platform,source
+mate-60-mate-70,Mate 60 / Mate 70,1216 x 2688,374 x 826,3.25,official,harmonyos,references/devices.md
+mate-60-pro,Mate 60 Pro,1260 x 2720,388 x 836,3.25,official,harmonyos,references/devices.md
+mate-70-pro,Mate 70 Pro,1316 x 2832,376 x 810,3.50,official,harmonyos,references/devices.md
+mate-80-mate-80-pro,Mate 80 / Mate 80 Pro,"1280 x 2832 (6.75"")",366 x 809,3.50,official,harmonyos,references/devices.md
+mate-80-pro-max,Mate 80 Pro Max,"1320 x 2848 (6.9"")",377 x 814,3.50,official,harmonyos,references/devices.md
+pura-70,Pura 70,1256 x 2760,372 x 818,3.38,official,harmonyos,references/devices.md
+pura-70-pro,Pura 70 Pro,1260 x 2844,373 x 843,3.38,official,harmonyos,references/devices.md
+pura-80,Pura 80,1256 x 2760,359 x 789,3.50,official,harmonyos,references/devices.md
+pura-90,Pura 90,"1320 x 2856 (6.8"", 460ppi)",377 x 816,3.50,official,harmonyos,references/devices.md
+pura-90-pro,Pura 90 Pro,"1256 x 2760 (6.6"", 460ppi)",359 x 789,3.50,official,harmonyos,references/devices.md
+pura-90-pro-max,Pura 90 Pro Max,"1308 x 2880 (6.9"", 460ppi)",374 x 823,3.50,official,harmonyos,references/devices.md
+mate-x5-外-展开,Mate X5 外 / 展开,1080 x 2504 / 2224 x 2496,346 x 802 / 712 x 798,3.12,official,harmonyos,references/devices.md
+mate-x6-外-展开,Mate X6 外 / 展开,1080 x 2440 / 2240 x 2440,360 x 813 / 747 x 813,3.00,official,harmonyos,references/devices.md
+mate-xt-xts-单折-双折-三折,Mate XT / XTs 单折 / 双折 / 三折,"2232x1008 (6.4"") / 2232x2048 (7.9"") / 2232x3184 (10.2"")",350 x 776 / 712 x 776 / 1108 x 776,2.88,official,harmonyos,references/devices.md
+mate-xt-2-非凡大师-外屏-三屏展开,Mate XT 2 非凡大师 外屏 / 三屏展开,"2442 x 1140 (6.5"", 412ppi) / 2232 x 3184 (10.2"", 382ppi)",官方 vp 表未收录 (未验证),未查到,unverified,harmonyos,references/devices.md
+matepad-matepad-pro,MatePad / MatePad Pro,2560 x 1600 / 2880 x 1920,1280 x 800 / 1440 x 960,2.0,official,harmonyos,references/devices.md
+matebook-pro-鸿蒙-pc-14-2,"MateBook Pro (鸿蒙 PC, 14.2"")",3120 x 2080,缩放后逻辑分辨率官方未公布,未查到,not-found,harmonyos,references/devices.md
+matebook-fold-非凡大师-展开-18-折叠-13,"MateBook Fold 非凡大师 (展开 18"" / 折叠 13"")",3296 x 2472,"逻辑分辨率未查到, 参数来自可信媒体",未查到,not-found,harmonyos,references/devices.md

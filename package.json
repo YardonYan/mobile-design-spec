@@ -6,7 +6,13 @@
   "scripts": {
     "test": "node scripts/selftest.mjs",
     "convert": "node scripts/convert.cjs",
-    "audit": "node scripts/audit.cjs"
+    "audit": "node scripts/audit.cjs",
+    "data": "node tools/build_data.mjs",
+    "data:check": "node tools/build_data.mjs --check",
+    "provenance": "node tools/build_provenance.mjs",
+    "provenance:check": "node scripts/check_provenance.mjs",
+    "data:verify": "node tools/build_data.mjs --check && node tools/build_provenance.mjs --check && node scripts/check_provenance.mjs",
+    "skill:install": "node tools/install.mjs"
   },
   "engines": {
     "node": ">=18"

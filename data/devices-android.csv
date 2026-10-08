@@ -1,0 +1,21 @@
+id,设备,物理 (px),DPR,dp 宽 x 高,密度,status,platform,source
+pixel-11,Pixel 11,1080 x 2424,2.625,411 x 923 (推算),420dpi,derived,android,references/devices.md
+pixel-11-pro,Pixel 11 Pro,1280 x 2856,3.125,410 x 914 (推算),500dpi,derived,android,references/devices.md
+pixel-11-pro-xl,Pixel 11 Pro XL,1344 x 2992,3.25,414 x 921 (推算),520dpi,derived,android,references/devices.md
+galaxy-s26-ultra,Galaxy S26 Ultra,3120 x 1440,3.5,411 x 891 (推算),"560dpi, 约 498ppi",derived,android,references/devices.md
+galaxy-s26,Galaxy S26+,3120 x 1440,3.5,411 x 891 (推算),560dpi,derived,android,references/devices.md
+galaxy-s26,Galaxy S26,1080 x 2340,3.0,360 x 780 (推算),"480dpi, 媒体口径待核",derived,android,references/devices.md
+vivo-x300-ultra-iqoo-15-ultra,vivo X300 Ultra / iQOO 15 Ultra,3168 x 1440,3.5,411 x 874 (推算),约 510 ~ 514ppi,derived,android,references/devices.md
+小米-17-ultra,小米 17 Ultra,2608 x 1200,3.0,400 x 869 (推算),约 414ppi,derived,android,references/devices.md
+pixel-10,Pixel 10,1080 x 2424,2.625,411 x 923 (推算),420dpi,derived,android,references/devices.md
+pixel-10-pro,Pixel 10 Pro,1280 x 2856,3.125,410 x 914 (推算),500dpi,derived,android,references/devices.md
+pixel-10-pro-xl,Pixel 10 Pro XL,1344 x 2992,3.25,414 x 921 (推算); DeviceAtlas 实测 448 x 998 @3.0,520dpi,derived,android,references/devices.md
+pixel-10-pro-fold-外屏,Pixel 10 Pro Fold 外屏,1080 x 2364,2.625,411 x 901 (未验证),420dpi,unverified,android,references/devices.md
+pixel-10-pro-fold-内屏,Pixel 10 Pro Fold 内屏,2076 x 2152,3.0,692 x 717 (推算),480dpi,derived,android,references/devices.md
+galaxy-s25,Galaxy S25,1080 x 2340,3.0,360 x 780 (推算),480dpi,derived,android,references/devices.md
+galaxy-s25-ultra,Galaxy S25+ / Ultra,1440 x 3120,3.5,412 x 891 (推算); DeviceAtlas 实测视口 384 x 832,560dpi,derived,android,references/devices.md
+小米-15-pro,小米 15 Pro,未验证,3.5,412 x 914 (实测视口),560dpi,unverified,android,references/devices.md
+1080-x-2400-一档-redmi-note-13-等,1080 x 2400 一档 (Redmi Note 13 等),1080 x 2400,2.75,393 x 873 (推算),440dpi,derived,android,references/devices.md
+1-5k-一档-小米-14t-poco-x6-pro,1.5K 一档 (小米 14T / Poco X6 Pro),1220 x 2712,3.0,407 x 905 (推算),480dpi,derived,android,references/devices.md
+galaxy-z-fold6-内-外,Galaxy Z Fold6 内 / 外,未验证,3.0,619 x 720 / 323 x 792 (未验证),480dpi,unverified,android,references/devices.md
+galaxy-z-flip6-展开,Galaxy Z Flip6 展开,未验证,2.75,393 x 960 (未验证),440dpi,unverified,android,references/devices.md

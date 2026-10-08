@@ -1,0 +1,6 @@
+id,依据,数据,用途,status,platform,source
+statcounter-全球移动视口-top-6-2026-09,StatCounter 全球移动视口 top 6 (2026-09),"414x896 13.35%、360x800 7.54%、384x832 7.10%、390x844 6.05%、393x873 4.18%、360x780 3.39%, 合计约 42%",决定手机侧的宽档: 360 / 384 / 390 / 393 / 414,official,all,references/devices.md
+counterpoint-2026-q2-中国,Counterpoint 2026 Q2 中国,华为 23% 第一、苹果 18%、vivo 16%、OPPO 15%、小米 12%、荣耀 11%; 同季 HarmonyOS 份额 24% 首超 iOS 18%,"鸿蒙必须进表, 且面向中文开发者时优先级不低于 Android",official,all,references/devices.md
+apple-官方-app-store-交易设备-2026-06-07,"Apple 官方 (App Store 交易设备, 2026-06-07)",iOS 26 占全部设备 79%、近四年设备 86%; iPadOS 26 占 68% / 79%,"iPhone 侧只需覆盖近 4 代, 更早机型归入兼容档",official,all,references/devices.md
+华为官方-余承东口径-2026-10-01,"华为官方 (余承东口径, 2026-10-01)","HarmonyOS 终端设备数突破 9000 万; 6.1.1 占存量 86.82%, 7.0.0 占 5.27% (2026-09-06)","鸿蒙侧按 NEXT 5.x / 6.x 为准, 不再考虑兼容 Android APK 的旧鸿蒙",official,all,references/devices.md
+statcounter-全球桌面视口-2026-09,StatCounter 全球桌面视口 (2026-09),1920x1080 28.07%、1536x864 10.00%、1366x768 7.95%、1280x720 4.71%、2560x1440 3.95%,桌面 Web 的断点与容器上限取值,official,all,references/devices.md

@@ -1,0 +1,682 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-08",
+  "note": "本文件由 tools/build_provenance.mjs 从 references/*.md 生成，不要手工编辑。",
+  "freshnessPolicy": {
+    "officialSpec": {
+      "days": 365,
+      "label": "官方规格页或官方设计文档"
+    },
+    "distributionStats": {
+      "days": 90,
+      "label": "第三方分布统计，季度会变"
+    },
+    "communitySource": {
+      "days": 30,
+      "label": "社区或单一来源，随时可能失效"
+    }
+  },
+  "dataBaseline": {
+    "declaredAt": "2026-10-07",
+    "declaredIn": "references/devices.md"
+  },
+  "records": [
+    {
+      "entityKind": "device-table",
+      "entityId": "devices-iphone",
+      "sourceFile": "data/devices-iphone.csv",
+      "generatedFrom": "references/devices.md",
+      "platform": "ios",
+      "sla": "officialSpec",
+      "verifiedAt": "2026-10-07",
+      "rowCount": 19,
+      "statusTally": {
+        "official": 17,
+        "unverified": 2
+      },
+      "sources": [
+        {
+          "text": "iOS Resolution (2026-09-18 更新)、Use Your Loaf: iPhone 17 screen sizes (2025-10-13)",
+          "urls": [
+            "https://www.ios-resolution.com/",
+            "https://useyourloaf.com/blog/iphone-17-screen-sizes/"
+          ],
+          "date": "2026-09-18"
+        },
+        {
+          "text": "iPhone 各机型状态栏与安全区高度 (2026-09-17 更新)、iPhone Duo 适配指南 (2026-09-10)",
+          "urls": [
+            "https://www.jianshu.com/p/bd2f684af0e3",
+            "https://lijianfei.com/post/iphone-duo-ios-screen-adaptation-guide/"
+          ],
+          "date": "2026-09-17"
+        },
+        {
+          "text": "Android 视口尺寸统计 (复核至 2026-09-24)、DeviceAtlas 真机视口与 DPI (2026-09-09 更新)、Pixel 11 系列发布稿 (2026-08-13)、2026 旗舰屏幕横评 (2026-10-04)",
+          "urls": [
+            "https://screensizechecker.com/devices/android-viewport-sizes",
+            "https://deviceatlas.com/blog/viewport-resolution-diagonal-screen-size-and-dpi-most-popular-smartphones",
+            "https://m.10jqka.com.cn/20260813/c678908847.shtml",
+            "https://3g.sina.com.cn/news/article/comos_nitzerr5756318.html"
+          ],
+          "date": "2026-10-04"
+        },
+        {
+          "text": "HarmonyOS 布局基础 (含设备 px/vp 表) (2026-05-07)、HarmonyOS 存量设备版本占比 (2026-10-01, 转录华为开发者数据)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/design-layout-basics-0000001795579413",
+            "https://www.ithome.com/html/android/1009012.htm"
+          ],
+          "date": "2026-10-01"
+        },
+        {
+          "text": "分布数据: StatCounter 移动视口、StatCounter 桌面视口 (2026-09, CC BY)、Counterpoint 2026 Q2 中国份额 (2026-09-01)、HarmonyOS 中国份额首超 iOS (2026-08-28)、Android API 分布仪表盘 (仅图表, 数值取自媒体转录, 快照 2025-12-01)",
+          "urls": [
+            "https://gs.statcounter.com/screen-resolution-stats/mobile/worldwide",
+            "https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide",
+            "https://m.163.com/news/article/L5OORSGU051191D6.html",
+            "https://antutu.com/doc/137645.htm",
+            "https://developer.android.com/about/dashboards",
+            "https://k.sina.cn/article_7857141524_1d452771401903u9uk.html"
+          ],
+          "date": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "entityKind": "device-table",
+      "entityId": "devices-ipad",
+      "sourceFile": "data/devices-ipad.csv",
+      "generatedFrom": "references/devices.md",
+      "platform": "ios",
+      "sla": "officialSpec",
+      "verifiedAt": "2026-10-07",
+      "rowCount": 5,
+      "statusTally": {
+        "official": 5
+      },
+      "sources": [
+        {
+          "text": "iOS Resolution (2026-09-18 更新)、Use Your Loaf: iPhone 17 screen sizes (2025-10-13)",
+          "urls": [
+            "https://www.ios-resolution.com/",
+            "https://useyourloaf.com/blog/iphone-17-screen-sizes/"
+          ],
+          "date": "2026-09-18"
+        },
+        {
+          "text": "iPhone 各机型状态栏与安全区高度 (2026-09-17 更新)、iPhone Duo 适配指南 (2026-09-10)",
+          "urls": [
+            "https://www.jianshu.com/p/bd2f684af0e3",
+            "https://lijianfei.com/post/iphone-duo-ios-screen-adaptation-guide/"
+          ],
+          "date": "2026-09-17"
+        },
+        {
+          "text": "Android 视口尺寸统计 (复核至 2026-09-24)、DeviceAtlas 真机视口与 DPI (2026-09-09 更新)、Pixel 11 系列发布稿 (2026-08-13)、2026 旗舰屏幕横评 (2026-10-04)",
+          "urls": [
+            "https://screensizechecker.com/devices/android-viewport-sizes",
+            "https://deviceatlas.com/blog/viewport-resolution-diagonal-screen-size-and-dpi-most-popular-smartphones",
+            "https://m.10jqka.com.cn/20260813/c678908847.shtml",
+            "https://3g.sina.com.cn/news/article/comos_nitzerr5756318.html"
+          ],
+          "date": "2026-10-04"
+        },
+        {
+          "text": "HarmonyOS 布局基础 (含设备 px/vp 表) (2026-05-07)、HarmonyOS 存量设备版本占比 (2026-10-01, 转录华为开发者数据)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/design-layout-basics-0000001795579413",
+            "https://www.ithome.com/html/android/1009012.htm"
+          ],
+          "date": "2026-10-01"
+        },
+        {
+          "text": "分布数据: StatCounter 移动视口、StatCounter 桌面视口 (2026-09, CC BY)、Counterpoint 2026 Q2 中国份额 (2026-09-01)、HarmonyOS 中国份额首超 iOS (2026-08-28)、Android API 分布仪表盘 (仅图表, 数值取自媒体转录, 快照 2025-12-01)",
+          "urls": [
+            "https://gs.statcounter.com/screen-resolution-stats/mobile/worldwide",
+            "https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide",
+            "https://m.163.com/news/article/L5OORSGU051191D6.html",
+            "https://antutu.com/doc/137645.htm",
+            "https://developer.android.com/about/dashboards",
+            "https://k.sina.cn/article_7857141524_1d452771401903u9uk.html"
+          ],
+          "date": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "entityKind": "device-table",
+      "entityId": "devices-android",
+      "sourceFile": "data/devices-android.csv",
+      "generatedFrom": "references/devices.md",
+      "platform": "android",
+      "sla": "officialSpec",
+      "verifiedAt": "2026-10-07",
+      "rowCount": 20,
+      "statusTally": {
+        "derived": 16,
+        "unverified": 4
+      },
+      "sources": [
+        {
+          "text": "iOS Resolution (2026-09-18 更新)、Use Your Loaf: iPhone 17 screen sizes (2025-10-13)",
+          "urls": [
+            "https://www.ios-resolution.com/",
+            "https://useyourloaf.com/blog/iphone-17-screen-sizes/"
+          ],
+          "date": "2026-09-18"
+        },
+        {
+          "text": "iPhone 各机型状态栏与安全区高度 (2026-09-17 更新)、iPhone Duo 适配指南 (2026-09-10)",
+          "urls": [
+            "https://www.jianshu.com/p/bd2f684af0e3",
+            "https://lijianfei.com/post/iphone-duo-ios-screen-adaptation-guide/"
+          ],
+          "date": "2026-09-17"
+        },
+        {
+          "text": "Android 视口尺寸统计 (复核至 2026-09-24)、DeviceAtlas 真机视口与 DPI (2026-09-09 更新)、Pixel 11 系列发布稿 (2026-08-13)、2026 旗舰屏幕横评 (2026-10-04)",
+          "urls": [
+            "https://screensizechecker.com/devices/android-viewport-sizes",
+            "https://deviceatlas.com/blog/viewport-resolution-diagonal-screen-size-and-dpi-most-popular-smartphones",
+            "https://m.10jqka.com.cn/20260813/c678908847.shtml",
+            "https://3g.sina.com.cn/news/article/comos_nitzerr5756318.html"
+          ],
+          "date": "2026-10-04"
+        },
+        {
+          "text": "HarmonyOS 布局基础 (含设备 px/vp 表) (2026-05-07)、HarmonyOS 存量设备版本占比 (2026-10-01, 转录华为开发者数据)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/design-layout-basics-0000001795579413",
+            "https://www.ithome.com/html/android/1009012.htm"
+          ],
+          "date": "2026-10-01"
+        },
+        {
+          "text": "分布数据: StatCounter 移动视口、StatCounter 桌面视口 (2026-09, CC BY)、Counterpoint 2026 Q2 中国份额 (2026-09-01)、HarmonyOS 中国份额首超 iOS (2026-08-28)、Android API 分布仪表盘 (仅图表, 数值取自媒体转录, 快照 2025-12-01)",
+          "urls": [
+            "https://gs.statcounter.com/screen-resolution-stats/mobile/worldwide",
+            "https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide",
+            "https://m.163.com/news/article/L5OORSGU051191D6.html",
+            "https://antutu.com/doc/137645.htm",
+            "https://developer.android.com/about/dashboards",
+            "https://k.sina.cn/article_7857141524_1d452771401903u9uk.html"
+          ],
+          "date": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "entityKind": "device-table",
+      "entityId": "devices-harmonyos",
+      "sourceFile": "data/devices-harmonyos.csv",
+      "generatedFrom": "references/devices.md",
+      "platform": "harmonyos",
+      "sla": "officialSpec",
+      "verifiedAt": "2026-10-07",
+      "rowCount": 18,
+      "statusTally": {
+        "official": 15,
+        "unverified": 1,
+        "not-found": 2
+      },
+      "sources": [
+        {
+          "text": "iOS Resolution (2026-09-18 更新)、Use Your Loaf: iPhone 17 screen sizes (2025-10-13)",
+          "urls": [
+            "https://www.ios-resolution.com/",
+            "https://useyourloaf.com/blog/iphone-17-screen-sizes/"
+          ],
+          "date": "2026-09-18"
+        },
+        {
+          "text": "iPhone 各机型状态栏与安全区高度 (2026-09-17 更新)、iPhone Duo 适配指南 (2026-09-10)",
+          "urls": [
+            "https://www.jianshu.com/p/bd2f684af0e3",
+            "https://lijianfei.com/post/iphone-duo-ios-screen-adaptation-guide/"
+          ],
+          "date": "2026-09-17"
+        },
+        {
+          "text": "Android 视口尺寸统计 (复核至 2026-09-24)、DeviceAtlas 真机视口与 DPI (2026-09-09 更新)、Pixel 11 系列发布稿 (2026-08-13)、2026 旗舰屏幕横评 (2026-10-04)",
+          "urls": [
+            "https://screensizechecker.com/devices/android-viewport-sizes",
+            "https://deviceatlas.com/blog/viewport-resolution-diagonal-screen-size-and-dpi-most-popular-smartphones",
+            "https://m.10jqka.com.cn/20260813/c678908847.shtml",
+            "https://3g.sina.com.cn/news/article/comos_nitzerr5756318.html"
+          ],
+          "date": "2026-10-04"
+        },
+        {
+          "text": "HarmonyOS 布局基础 (含设备 px/vp 表) (2026-05-07)、HarmonyOS 存量设备版本占比 (2026-10-01, 转录华为开发者数据)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/design-layout-basics-0000001795579413",
+            "https://www.ithome.com/html/android/1009012.htm"
+          ],
+          "date": "2026-10-01"
+        },
+        {
+          "text": "分布数据: StatCounter 移动视口、StatCounter 桌面视口 (2026-09, CC BY)、Counterpoint 2026 Q2 中国份额 (2026-09-01)、HarmonyOS 中国份额首超 iOS (2026-08-28)、Android API 分布仪表盘 (仅图表, 数值取自媒体转录, 快照 2025-12-01)",
+          "urls": [
+            "https://gs.statcounter.com/screen-resolution-stats/mobile/worldwide",
+            "https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide",
+            "https://m.163.com/news/article/L5OORSGU051191D6.html",
+            "https://antutu.com/doc/137645.htm",
+            "https://developer.android.com/about/dashboards",
+            "https://k.sina.cn/article_7857141524_1d452771401903u9uk.html"
+          ],
+          "date": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "entityKind": "baseline",
+      "entityId": "baselines",
+      "sourceFile": "data/baselines.csv",
+      "generatedFrom": "references/devices.md",
+      "platform": "all",
+      "sla": "officialSpec",
+      "verifiedAt": "2026-10-07",
+      "rowCount": 5,
+      "statusTally": {
+        "official": 5
+      },
+      "sources": [
+        {
+          "text": "iOS Resolution (2026-09-18 更新)、Use Your Loaf: iPhone 17 screen sizes (2025-10-13)",
+          "urls": [
+            "https://www.ios-resolution.com/",
+            "https://useyourloaf.com/blog/iphone-17-screen-sizes/"
+          ],
+          "date": "2026-09-18"
+        },
+        {
+          "text": "iPhone 各机型状态栏与安全区高度 (2026-09-17 更新)、iPhone Duo 适配指南 (2026-09-10)",
+          "urls": [
+            "https://www.jianshu.com/p/bd2f684af0e3",
+            "https://lijianfei.com/post/iphone-duo-ios-screen-adaptation-guide/"
+          ],
+          "date": "2026-09-17"
+        },
+        {
+          "text": "Android 视口尺寸统计 (复核至 2026-09-24)、DeviceAtlas 真机视口与 DPI (2026-09-09 更新)、Pixel 11 系列发布稿 (2026-08-13)、2026 旗舰屏幕横评 (2026-10-04)",
+          "urls": [
+            "https://screensizechecker.com/devices/android-viewport-sizes",
+            "https://deviceatlas.com/blog/viewport-resolution-diagonal-screen-size-and-dpi-most-popular-smartphones",
+            "https://m.10jqka.com.cn/20260813/c678908847.shtml",
+            "https://3g.sina.com.cn/news/article/comos_nitzerr5756318.html"
+          ],
+          "date": "2026-10-04"
+        },
+        {
+          "text": "HarmonyOS 布局基础 (含设备 px/vp 表) (2026-05-07)、HarmonyOS 存量设备版本占比 (2026-10-01, 转录华为开发者数据)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/design-layout-basics-0000001795579413",
+            "https://www.ithome.com/html/android/1009012.htm"
+          ],
+          "date": "2026-10-01"
+        },
+        {
+          "text": "分布数据: StatCounter 移动视口、StatCounter 桌面视口 (2026-09, CC BY)、Counterpoint 2026 Q2 中国份额 (2026-09-01)、HarmonyOS 中国份额首超 iOS (2026-08-28)、Android API 分布仪表盘 (仅图表, 数值取自媒体转录, 快照 2025-12-01)",
+          "urls": [
+            "https://gs.statcounter.com/screen-resolution-stats/mobile/worldwide",
+            "https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide",
+            "https://m.163.com/news/article/L5OORSGU051191D6.html",
+            "https://antutu.com/doc/137645.htm",
+            "https://developer.android.com/about/dashboards",
+            "https://k.sina.cn/article_7857141524_1d452771401903u9uk.html"
+          ],
+          "date": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "entityKind": "selection-basis",
+      "entityId": "device-selection-basis",
+      "sourceFile": "data/device-selection-basis.csv",
+      "generatedFrom": "references/devices.md",
+      "platform": "all",
+      "sla": "distributionStats",
+      "verifiedAt": "2026-10-07",
+      "rowCount": 5,
+      "statusTally": {
+        "official": 5
+      },
+      "sources": [
+        {
+          "text": "iOS Resolution (2026-09-18 更新)、Use Your Loaf: iPhone 17 screen sizes (2025-10-13)",
+          "urls": [
+            "https://www.ios-resolution.com/",
+            "https://useyourloaf.com/blog/iphone-17-screen-sizes/"
+          ],
+          "date": "2026-09-18"
+        },
+        {
+          "text": "iPhone 各机型状态栏与安全区高度 (2026-09-17 更新)、iPhone Duo 适配指南 (2026-09-10)",
+          "urls": [
+            "https://www.jianshu.com/p/bd2f684af0e3",
+            "https://lijianfei.com/post/iphone-duo-ios-screen-adaptation-guide/"
+          ],
+          "date": "2026-09-17"
+        },
+        {
+          "text": "Android 视口尺寸统计 (复核至 2026-09-24)、DeviceAtlas 真机视口与 DPI (2026-09-09 更新)、Pixel 11 系列发布稿 (2026-08-13)、2026 旗舰屏幕横评 (2026-10-04)",
+          "urls": [
+            "https://screensizechecker.com/devices/android-viewport-sizes",
+            "https://deviceatlas.com/blog/viewport-resolution-diagonal-screen-size-and-dpi-most-popular-smartphones",
+            "https://m.10jqka.com.cn/20260813/c678908847.shtml",
+            "https://3g.sina.com.cn/news/article/comos_nitzerr5756318.html"
+          ],
+          "date": "2026-10-04"
+        },
+        {
+          "text": "HarmonyOS 布局基础 (含设备 px/vp 表) (2026-05-07)、HarmonyOS 存量设备版本占比 (2026-10-01, 转录华为开发者数据)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/design-layout-basics-0000001795579413",
+            "https://www.ithome.com/html/android/1009012.htm"
+          ],
+          "date": "2026-10-01"
+        },
+        {
+          "text": "分布数据: StatCounter 移动视口、StatCounter 桌面视口 (2026-09, CC BY)、Counterpoint 2026 Q2 中国份额 (2026-09-01)、HarmonyOS 中国份额首超 iOS (2026-08-28)、Android API 分布仪表盘 (仅图表, 数值取自媒体转录, 快照 2025-12-01)",
+          "urls": [
+            "https://gs.statcounter.com/screen-resolution-stats/mobile/worldwide",
+            "https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide",
+            "https://m.163.com/news/article/L5OORSGU051191D6.html",
+            "https://antutu.com/doc/137645.htm",
+            "https://developer.android.com/about/dashboards",
+            "https://k.sina.cn/article_7857141524_1d452771401903u9uk.html"
+          ],
+          "date": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "entityKind": "reference-doc",
+      "entityId": "devices",
+      "sourceFile": "references/devices.md",
+      "sla": "officialSpec",
+      "verifiedAt": "2026-10-07",
+      "verifiedAtBasis": "文件内声明的数据基准日期",
+      "sourceCount": 7,
+      "sources": [
+        {
+          "text": "iOS Resolution (2026-09-18 更新)、Use Your Loaf: iPhone 17 screen sizes (2025-10-13)",
+          "urls": [
+            "https://www.ios-resolution.com/",
+            "https://useyourloaf.com/blog/iphone-17-screen-sizes/"
+          ],
+          "date": "2026-09-18"
+        },
+        {
+          "text": "iPhone 各机型状态栏与安全区高度 (2026-09-17 更新)、iPhone Duo 适配指南 (2026-09-10)",
+          "urls": [
+            "https://www.jianshu.com/p/bd2f684af0e3",
+            "https://lijianfei.com/post/iphone-duo-ios-screen-adaptation-guide/"
+          ],
+          "date": "2026-09-17"
+        },
+        {
+          "text": "Android 视口尺寸统计 (复核至 2026-09-24)、DeviceAtlas 真机视口与 DPI (2026-09-09 更新)、Pixel 11 系列发布稿 (2026-08-13)、2026 旗舰屏幕横评 (2026-10-04)",
+          "urls": [
+            "https://screensizechecker.com/devices/android-viewport-sizes",
+            "https://deviceatlas.com/blog/viewport-resolution-diagonal-screen-size-and-dpi-most-popular-smartphones",
+            "https://m.10jqka.com.cn/20260813/c678908847.shtml",
+            "https://3g.sina.com.cn/news/article/comos_nitzerr5756318.html"
+          ],
+          "date": "2026-10-04"
+        },
+        {
+          "text": "HarmonyOS 布局基础 (含设备 px/vp 表) (2026-05-07)、HarmonyOS 存量设备版本占比 (2026-10-01, 转录华为开发者数据)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/design-layout-basics-0000001795579413",
+            "https://www.ithome.com/html/android/1009012.htm"
+          ],
+          "date": "2026-10-01"
+        },
+        {
+          "text": "分布数据: StatCounter 移动视口、StatCounter 桌面视口 (2026-09, CC BY)、Counterpoint 2026 Q2 中国份额 (2026-09-01)、HarmonyOS 中国份额首超 iOS (2026-08-28)、Android API 分布仪表盘 (仅图表, 数值取自媒体转录, 快照 2025-12-01)",
+          "urls": [
+            "https://gs.statcounter.com/screen-resolution-stats/mobile/worldwide",
+            "https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide",
+            "https://m.163.com/news/article/L5OORSGU051191D6.html",
+            "https://antutu.com/doc/137645.htm",
+            "https://developer.android.com/about/dashboards",
+            "https://k.sina.cn/article_7857141524_1d452771401903u9uk.html"
+          ],
+          "date": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "entityKind": "reference-doc",
+      "entityId": "ios",
+      "sourceFile": "references/ios.md",
+      "sla": "distributionStats",
+      "verifiedAt": "2026-09-17",
+      "verifiedAtBasis": "来源小节里最近的一个日期",
+      "sourceCount": 3,
+      "sources": [
+        {
+          "text": "Meet Liquid Glass (WWDC) (2025-11-17)、The iOS 26 Design Guidelines (2026-04-22)",
+          "urls": [
+            "https://developer.apple.com/videos/play/meet-with-apple/208/",
+            "https://learnui.design/blog/ios-design-guidelines-templates.html"
+          ],
+          "date": "2026-04-22"
+        },
+        {
+          "text": "iPhone 各机型状态栏与安全区高度 (2026-09-17 更新)",
+          "urls": [
+            "https://www.jianshu.com/p/bd2f684af0e3"
+          ],
+          "date": "2026-09-17"
+        }
+      ]
+    },
+    {
+      "entityKind": "reference-doc",
+      "entityId": "android",
+      "sourceFile": "references/android.md",
+      "sla": "distributionStats",
+      "verifiedAt": "2026-09-23",
+      "verifiedAtBasis": "来源小节里最近的一个日期",
+      "sourceCount": 6,
+      "sources": [
+        {
+          "text": "M3 Navigation bar (2026-07-31)、M3 Type scale tokens",
+          "urls": [
+            "https://m3.material.io/components/navigation-bar",
+            "https://m3.material.io/styles/typography/type-scale-tokens"
+          ],
+          "date": "2026-07-31"
+        },
+        {
+          "text": "androidx material3 tokens 源码、Compose Material 3 releases (stable 1.4.0, 2026-09-23)",
+          "urls": [
+            "https://raw.githubusercontent.com/androidx/androidx/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/TypeScaleTokens.kt",
+            "https://developer.android.google.cn/jetpack/androidx/releases/compose-material3"
+          ],
+          "date": "2026-09-23"
+        },
+        {
+          "text": "Material 3 Expressive overview (2026-06-02)",
+          "urls": [
+            "https://supercharge.design/blog/material-3-expressive"
+          ],
+          "date": "2026-06-02"
+        },
+        {
+          "text": "Use window size classes、Canonical layouts、Support different screens (2026-02-26)",
+          "urls": [
+            "https://developer.android.google.cn/develop/ui/compose/layouts/adaptive/use-window-size-classes",
+            "https://developer.android.google.cn/develop/ui/views/layout/canonical-layouts",
+            "https://developer.android.google.cn/guide/practices/screens_support"
+          ],
+          "date": "2026-02-26"
+        }
+      ]
+    },
+    {
+      "entityKind": "reference-doc",
+      "entityId": "harmonyos",
+      "sourceFile": "references/harmonyos.md",
+      "sla": "distributionStats",
+      "verifiedAt": "2026-09-15",
+      "verifiedAtBasis": "来源小节里最近的一个日期",
+      "sourceCount": 9,
+      "sources": [
+        {
+          "text": "像素单位 vp/fp/lpx (2026-03-09)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/harmonyos-references/ts-pixel-units-0000001820881013"
+          ],
+          "date": "2026-03-09"
+        },
+        {
+          "text": "布局基础 (设备 px/vp 表、栅格、fp 定义) (2026-05-07)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/design-layout-basics-0000001795579413"
+          ],
+          "date": "2026-05-07"
+        },
+        {
+          "text": "间隔参数 (2026-09-09)、圆角参数 (2026-08-12)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/interval-parameter-0000002562577161",
+            "https://developer.huawei.com/consumer/cn/doc/design-guides/corner-radius-parameter-0000002556468705"
+          ],
+          "date": "2026-09-09"
+        },
+        {
+          "text": "栅格布局 GridRow (2026-08-28)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-layout-development-grid-layout"
+          ],
+          "date": "2026-08-28"
+        },
+        {
+          "text": "触控尺寸规则 touch-target-size (2026-01-15)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide_touch-target-size"
+          ],
+          "date": "2026-01-15"
+        },
+        {
+          "text": "开发应用沉浸式效果 (2026-04-20)、窗口沉浸式最佳实践 (2026-09-15)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-develop-apply-immersive-effects",
+            "https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive"
+          ],
+          "date": "2026-09-15"
+        },
+        {
+          "text": "字号规范 V1、HarmonyOS Sans (2026-06-12)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/design-guides-V1/font-0000001110498550-V1",
+            "https://developer.huawei.com/consumer/cn/doc/doccenter-ux-design/font-0000001828772001"
+          ],
+          "date": "2026-06-12"
+        },
+        {
+          "text": "px2vp 单位转换常见问题 (2026-04-29)、Configuration (2026-07-28)",
+          "urls": [
+            "https://developer.huawei.com/consumer/cn/doc/architecture-guides/tools-v1_2-ts_229-0000002417124253",
+            "https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-app-ability-configuration"
+          ],
+          "date": "2026-07-28"
+        },
+        {
+          "text": "微信小程序 HarmonyOS 适配指南 (2026-09-12)",
+          "urls": [
+            "https://developers.weixin.qq.com/miniprogram/dev/framework/ability/ohos.html"
+          ],
+          "date": "2026-09-12"
+        }
+      ]
+    },
+    {
+      "entityKind": "reference-doc",
+      "entityId": "miniprogram",
+      "sourceFile": "references/miniprogram.md",
+      "sla": "distributionStats",
+      "verifiedAt": "2026-10-06",
+      "verifiedAtBasis": "来源小节里最近的一个日期",
+      "sourceCount": 4,
+      "sources": [
+        {
+          "text": "小程序 WXSS 单位、app.json 配置、Skyline WXSS (抓取于 2026-10-06)",
+          "urls": [
+            "https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html",
+            "https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html",
+            "https://developers.weixin.qq.com/miniprogram/dev/framework/runtime/skyline/wxss.html"
+          ],
+          "date": "2026-10-06"
+        },
+        {
+          "text": "微信小程序 HarmonyOS 适配指南 (2026-09-12)",
+          "urls": [
+            "https://developers.weixin.qq.com/miniprogram/dev/framework/ability/ohos.html"
+          ],
+          "date": "2026-09-12"
+        }
+      ]
+    },
+    {
+      "entityKind": "reference-doc",
+      "entityId": "h5",
+      "sourceFile": "references/h5.md",
+      "sla": "distributionStats",
+      "verifiedAt": "2025-09-15",
+      "verifiedAtBasis": "来源小节里最近的一个日期",
+      "sourceCount": 5,
+      "sources": [
+        {
+          "text": "WebKit Features in Safari 26.0 (2025-09-15)",
+          "urls": [
+            "https://webkit.org/blog/17333/webkit-features-in-safari-26-0/"
+          ],
+          "date": "2025-09-15"
+        }
+      ]
+    },
+    {
+      "entityKind": "reference-doc",
+      "entityId": "multi-device",
+      "sourceFile": "references/multi-device.md",
+      "sla": "distributionStats",
+      "verifiedAt": "2026-10-07",
+      "verifiedAtBasis": "来源小节里最近的一个日期",
+      "sourceCount": 4,
+      "sources": [
+        {
+          "text": "Apple HIG（2026-10-07 抓取）：layout、typography、buttons、windows、tab-bars、sidebars、multitasking、mac-catalyst、pointing-devices、images、designing-for-iphone-duo",
+          "urls": [
+            "https://developer.apple.com/design/human-interface-guidelines/layout",
+            "https://developer.apple.com/design/human-interface-guidelines/typography",
+            "https://developer.apple.com/design/human-interface-guidelines/buttons",
+            "https://developer.apple.com/design/human-interface-guidelines/windows",
+            "https://developer.apple.com/design/human-interface-guidelines/tab-bars",
+            "https://developer.apple.com/design/human-interface-guidelines/sidebars",
+            "https://developer.apple.com/design/human-interface-guidelines/multitasking",
+            "https://developer.apple.com/design/human-interface-guidelines/mac-catalyst",
+            "https://developer.apple.com/design/human-interface-guidelines/pointing-devices",
+            "https://developer.apple.com/design/human-interface-guidelines/images",
+            "https://developer.apple.com/design/human-interface-guidelines/designing-for-iphone-duo"
+          ],
+          "date": "2026-10-07"
+        }
+      ]
+    },
+    {
+      "entityKind": "reference-doc",
+      "entityId": "code-patterns",
+      "sourceFile": "references/code-patterns.md",
+      "sla": "distributionStats",
+      "verifiedAt": null,
+      "verifiedAtBasis": "来源小节里最近的一个日期",
+      "sourceCount": 0,
+      "sources": []
+    }
+  ]
+}

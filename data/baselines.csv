@@ -1,0 +1,6 @@
+id,平台,主稿,下限校验,上限校验,单位,status,platform,source
+ios,iOS,402 x 874 pt,390 x 844,440 x 956,pt,official,all,references/devices.md
+android,Android,411 x 891 dp,360 x 780,折叠内屏 692dp,dp / sp,official,all,references/devices.md
+harmonyos,HarmonyOS,"384 x 832 vp (建议值, 官方未指定)",346 vp,展开态 1108 vp,vp / fp / lpx,official,all,references/devices.md
+微信小程序,微信小程序,750rpx 全宽,320vp 级窄屏,大屏用媒体查询,rpx 或 vw,official,all,references/devices.md
+h5,H5,375px 全宽,320px,内容最大宽 750px,px / rem / dvh,official,all,references/devices.md

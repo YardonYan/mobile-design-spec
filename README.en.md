@@ -34,9 +34,11 @@ A Qoder / Claude Code Skill that applies real mobile sizing specs (iOS, Android,
 - [Data baseline and currency](#data-baseline-and-currency)
 - [Why these devices](#why-these-devices)
 - [Where the data comes from](#where-the-data-comes-from)
+- [Data files and provenance](#data-files-and-provenance)
 - [Project structure](#project-structure)
 - [Tests and CI](#tests-and-ci)
 - [Known limitations](#known-limitations)
+- [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -103,6 +105,28 @@ node scripts/audit.cjs your-style-directory
 To use it inside an agent, drop the whole directory into that agent's skills folder — see the next section.
 
 ## Installation
+
+### Using the installer (recommended)
+
+The repo ships a zero-dependency installer that copies the skill into the skills directory of each AI app on your machine — no manual copying:
+
+```bash
+node tools/install.mjs --list                 # list available targets
+node tools/install.mjs --ai workbuddy         # install into WorkBuddy
+node tools/install.mjs --ai workbuddy --ai trae-cn --ai codebuddy   # several at once
+node tools/install.mjs --ai all               # every target
+node tools/install.mjs --ai all --dry-run     # preview only, writes nothing
+node tools/install.mjs --ai all --force       # overwrite an existing install
+node tools/install.mjs --ai workbuddy --uninstall   # remove
+```
+
+Targets verified to exist on a real machine: WorkBuddy, TRAE China edition, CodeBuddy, Claude Code, Codex CLI, OpenClaw, Qwen Code, cc-switch. `cursor` and the generic `.agents` target use the conventional path and have not been verified.
+
+Add `--project` to install into relative directories inside the current project (for example `.workbuddy/skills`), which suits a per-project setup.
+
+The installer uses only the Node standard library, skips `.git`, `node_modules` and caches, and checks that `SKILL.md` sits at the repository root before copying — it aborts with an error if it does not.
+
+### Manual installation
 
 | Environment | How |
 | --- | --- |
@@ -259,6 +283,60 @@ Every value also carries a confidence marker: measured (stated officially), deri
 
 Upstream errors that have been corrected are recorded in the errata sections of `ios.md` and `miniprogram.md`, including the iPhone 15 Plus logical size (428 x 926 → 430 x 932), the WeChat TabBar icon unit (rpx → px) and the Material 2 56dp top bar.
 
+## Data files and provenance
+
+Beyond the human-readable `references/`, the repo carries a machine-readable layer: the CSVs under `data/`, plus a `provenance.json` recording sources and currency.
+
+### How data/ is produced
+
+**The CSVs are generated from `references/`, not maintained by hand.** Every number should have exactly one source; keeping two copies in sync by hand drifts sooner or later.
+
+```bash
+npm run data          # regenerate data/*.csv from the tables in references/*.md
+npm run data:check    # verify only; exit code 1 if they differ
+```
+
+| File | Content | Rows |
+| --- | --- | --- |
+| `devices-iphone.csv` | Per-model iPhone parameters | 19 |
+| `devices-ipad.csv` | Per-model iPad parameters | 5 |
+| `devices-android.csv` | Per-device Android parameters | 20 |
+| `devices-harmonyos.csv` | Per-model HarmonyOS parameters | 18 |
+| `baselines.csv` | Design baselines for the five platforms | 5 |
+| `device-selection-basis.csv` | Why these devices were chosen | 5 |
+
+Each row carries a stable business key `id` (derived from the model name) and a `status` column:
+
+| status | Meaning | Marker in the source text |
+| --- | --- | --- |
+| `official` | Stated directly in an official table | none |
+| `measured` | Measured on a real device | 实测 |
+| `derived` | Resolution divided by density | 推算 |
+| `unverified` | Single source or community data — verify on a real device before use | 未验证 |
+| `not-found` | No official figure currently exists | 未查到 / 未收录 / 未公布 |
+
+### Freshness SLA
+
+Data expires and memory is not a reliable reminder. `data/provenance.json` records a source, a verification date and a review window for every dataset:
+
+| Class | Window | Applies to |
+| --- | --- | --- |
+| `officialSpec` | 365 days | Official spec pages and official design docs |
+| `distributionStats` | 90 days | Third-party distribution statistics — they shift quarterly |
+| `communitySource` | 30 days | Community or single-source data |
+
+Check it with:
+
+```bash
+npm run provenance:check            # per-record age and days remaining
+npm run provenance:check -- --json  # machine-readable, for scheduled jobs
+npm run data:verify                 # all three checks in one go — usable in CI
+```
+
+Exit code is 1 when any dataset is overdue. After re-verifying, update the date in the relevant `references/` section and rerun `npm run data && npm run provenance`.
+
+`provenance.json` is generated too (`npm run provenance`) and should not be edited by hand.
+
 ## Project structure
 
 ```
@@ -266,7 +344,16 @@ mobile-design-spec/
 ├── SKILL.md                    Decision entry: platform detection, cross-platform table, hard rules
 ├── README.md  README.en.md  LICENSE  package.json
 ├── assets/                     Images used by the READMEs
-├── tools/                      Image generation script; regenerates assets/
+├── data/                       Machine-readable data, generated from references/, do not edit by hand
+│   ├── devices-*.csv           Per-device parameters for four platforms
+│   ├── baselines.csv           Design baselines for the five platforms
+│   ├── device-selection-basis.csv  Rationale for device selection
+│   └── provenance.json         Sources, verification dates and freshness SLA
+├── tools/
+│   ├── install.mjs             Install into each AI app's skills directory
+│   ├── build_data.mjs          references → data/*.csv
+│   ├── build_provenance.mjs    references → provenance.json
+│   └── gen_readme_images.py    Generates the README images
 ├── references/                 Loaded on demand, each with sources and retrieval dates
 │   ├── devices.md              Per-device tables + rationale for device selection
 │   ├── multi-device.md         Tablet / macOS / visionOS / watchOS / tvOS / Chromebook / HarmonyOS PC
@@ -275,6 +362,7 @@ mobile-design-spec/
 ├── scripts/
 │   ├── convert.cjs             Cross-platform conversion + export scale
 │   ├── audit.cjs               Spec lint, 16 rule families
+│   ├── check_provenance.mjs    Freshness check
 │   └── selftest.mjs            Regression tests
 └── tests/fixtures/             Positive and negative lint fixtures
 ```
@@ -307,7 +395,10 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: node scripts/audit.cjs src/   # exit code 1 on ERROR, blocking the PR
+      - run: npm run data:verify           # fails when data/ has drifted from references/, or data is overdue
 ```
+
+`data:verify` runs three checks in one pass: whether the CSVs still match `references/`, whether `provenance.json` still matches `references/`, and whether any dataset has passed its review window. Failing any of the three sets exit code 1.
 
 ## Known limitations
 
@@ -316,6 +407,71 @@ jobs:
 - For HarmonyOS smart screens and wearables, HarmonyOS PC window limits, iPad sidebar width and the macOS minimum window size, no official figures could be found. The repository documents that absence rather than guessing.
 - WeChat Mini Programs render through ArkWeb on HarmonyOS, whose CSS support differs from Skyline. Only the known cross-renderer differences are listed.
 - The device tables are a 2026-10 snapshot and need re-checking over time.
+
+The freshness check (`npm run provenance:check`) reports the following, listed here plainly rather than hidden:
+
+- The most recent date in the sources section of `references/h5.md` is 2025-09-15, past its 90-day review window. The H5 breakpoint and type-scale figures come from MDN and WCAG, whose guidance changes slowly — but the citation itself is overdue.
+- `references/code-patterns.md` has no sources section, so its freshness cannot be determined automatically. It lists pattern comparisons per stack — experiential content rather than official figures, which is why it was never given sources; but without sources it cannot enter the provenance chain.
+
+Neither has been "fixed": updating a date requires an actual review, and moving a number to make the check go green would defeat the purpose.
+
+## Troubleshooting
+
+### Installed, but the skill never fires
+
+Check three things, in order:
+
+1. **Is `SKILL.md` at the top level of the skill directory?** The correct shape is `<app-skills-dir>/mobile-design-spec/SKILL.md`. If cloning or unzipping added an extra layer (`mobile-design-spec/mobile-design-spec/SKILL.md`), the app will not find it.
+2. **Restart the app.** Most apps scan the skills directory only at startup.
+3. **Is that directory the one the app actually scans?** Run `node tools/install.mjs --list`; targets marked as verified were confirmed to exist.
+
+### Cloning or unzipping left an extra directory layer
+
+That happens when you run `git clone` inside a directory that already has the same name. The installer avoids the whole issue:
+
+```bash
+node tools/install.mjs --ai workbuddy
+```
+
+It resolves the nesting and the destination directory name for you.
+
+### The installer says it cannot find `SKILL.md` at the repository root
+
+It checks this before copying, because most AI apps only recognise the `skill-directory/SKILL.md` shape. If you see this error you ran the installer from the wrong place — it must run from the repository root and locates `SKILL.md` itself.
+
+### `npm test` fails with `spawnSync ... EBUSY`
+
+```
+error: 'spawnSync C:\...\node.exe EBUSY'
+code: 'EBUSY'
+```
+
+The self-test spawns child processes to run `convert.cjs` and `audit.cjs`, which restricted execution environments (sandboxed command channels, for example) refuse. This is not a code problem. To confirm the repo itself is healthy, call the two commands directly:
+
+```bash
+node scripts/convert.cjs 16pt                     # should print multi-platform conversions
+node scripts/audit.cjs tests/fixtures/bad.css     # should report 3 WARNs
+```
+
+If those produce output, the repo is fine — the environment simply will not let it fork.
+
+### `audit.cjs` exited with code 1 — did it crash?
+
+No. Exit code 1 means it found ERROR-level issues; that is a CI convention, deliberately failing the job. Only ERRORs set exit code 1 — `warn` and `info` do not.
+
+### Conversions do not match the design file
+
+Conversions are relative to the source design width, which defaults to the iOS baseline of 402. If your design file uses a different width, every result shifts. Override it:
+
+```bash
+node scripts/convert.cjs 16pt --from-width 375
+```
+
+You can also override a single platform's baseline with `--ios-width`, `--android-width`, `--mp-width` or `--h5-width`.
+
+### The lint reports nothing, but it looks wrong to the eye
+
+The lint is heuristic — it infers intent from selector names, so unconventional naming slips through, and it makes no visual judgement at all (it cannot tell whether spacing "feels" right). In those cases treat its output as a starting point and rely on manual review.
 
 ## Contributing
 

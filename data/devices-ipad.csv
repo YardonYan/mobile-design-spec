@@ -1,0 +1,6 @@
+id,机型,逻辑 (pt),物理 (px),倍率,ppi,status,platform,source
+ipad-pro-13-m4-m5,iPad Pro 13 (M4/M5),1032 x 1376,2064 x 2752,@2x,264,official,ios,references/devices.md
+ipad-pro-11-m4-m5,iPad Pro 11 (M4/M5),834 x 1210,1668 x 2420,@2x,264,official,ios,references/devices.md
+ipad-air-13,iPad Air 13,1024 x 1366,2048 x 2732,@2x,264,official,ios,references/devices.md
+ipad-air-11-ipad-10-11-代,iPad Air 11 / iPad 10、11 代,820 x 1180,1640 x 2360,@2x,264,official,ios,references/devices.md
+ipad-mini-7,iPad mini 7,744 x 1133,1488 x 2266,@2x,326,official,ios,references/devices.md
