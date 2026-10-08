@@ -124,6 +124,18 @@ node tools/install.mjs --ai workbuddy --uninstall   # 卸载
 
 安装器只依赖 Node 标准库，会跳过 `.git`、`node_modules`、缓存等目录；装之前先检查 `SKILL.md` 是否在仓库根目录，不在就报错退出。
 
+### 作为插件安装（WorkBuddy / CodeBuddy / Claude Code）
+
+仓库根目录带 `.codebuddy-plugin/` 与 `.claude-plugin/` 两份清单，可以直接注册成一个「单插件市场」，在应用里按插件方式安装，不用手工拷目录。
+
+清单的字段名与取值是照着应用自带的插件清单写的，不是自己发明的格式。**文件格式已逐字段对照应用自带的市场核对；注册与加载的端到端流程未做验证**，注册入口以你所装版本的界面为准。
+
+改过 `SKILL.md` 的 name 或版本号之后重新生成：
+
+```bash
+node tools/build_plugins.mjs .
+```
+
 ### 手工安装
 
 | 环境 | 做法 |
@@ -340,6 +352,8 @@ npm run data:verify                # 一次跑完上面三项校验，可直接�
 ```
 mobile-design-spec/
 ├── SKILL.md                    决策入口: 平台判定、跨平台速查表、硬性红线
+├── .codebuddy-plugin/          插件清单（WorkBuddy / CodeBuddy）
+├── .claude-plugin/             插件清单（Claude Code）
 ├── README.md  README.en.md  LICENSE  package.json
 ├── assets/                     README 配图
 ├── data/                       机器可读数据, 由 references 生成, 不手工编辑
@@ -351,6 +365,7 @@ mobile-design-spec/
 │   ├── install.mjs             装到本机各 AI 应用的 skills 目录
 │   ├── build_data.mjs          references → data/*.csv
 │   ├── build_provenance.mjs    references → provenance.json
+│   ├── build_plugins.mjs       生成插件清单
 │   └── gen_readme_images.py    生成 assets 配图
 ├── references/                 按需加载, 每份带来源与抓取日期
 │   ├── devices.md              逐机型参数表 + 机型选取依据

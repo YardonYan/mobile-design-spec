@@ -126,6 +126,18 @@ Add `--project` to install into relative directories inside the current project 
 
 The installer uses only the Node standard library, skips `.git`, `node_modules` and caches, and checks that `SKILL.md` sits at the repository root before copying — it aborts with an error if it does not.
 
+### Installing as a plugin (WorkBuddy / CodeBuddy / Claude Code)
+
+The repository root carries `.codebuddy-plugin/` and `.claude-plugin/` manifests, so it can be registered directly as a single-plugin marketplace and installed as a plugin rather than by copying directories.
+
+The field names and values follow the manifests shipped inside the apps themselves — this is not a format of my own invention. **The file format was checked field by field against the apps' own bundled marketplaces; the end-to-end register-and-load flow has not been verified.** Where you register it depends on the version you have.
+
+Regenerate the manifests after changing the `name` or version in `SKILL.md`:
+
+```bash
+node tools/build_plugins.mjs .
+```
+
 ### Manual installation
 
 | Environment | How |
@@ -342,6 +354,8 @@ Exit code is 1 when any dataset is overdue. After re-verifying, update the date 
 ```
 mobile-design-spec/
 ├── SKILL.md                    Decision entry: platform detection, cross-platform table, hard rules
+├── .codebuddy-plugin/          Plugin manifests (WorkBuddy / CodeBuddy)
+├── .claude-plugin/             Plugin manifests (Claude Code)
 ├── README.md  README.en.md  LICENSE  package.json
 ├── assets/                     Images used by the READMEs
 ├── data/                       Machine-readable data, generated from references/, do not edit by hand
@@ -353,6 +367,7 @@ mobile-design-spec/
 │   ├── install.mjs             Install into each AI app's skills directory
 │   ├── build_data.mjs          references → data/*.csv
 │   ├── build_provenance.mjs    references → provenance.json
+│   ├── build_plugins.mjs       Generates plugin manifests
 │   └── gen_readme_images.py    Generates the README images
 ├── references/                 Loaded on demand, each with sources and retrieval dates
 │   ├── devices.md              Per-device tables + rationale for device selection

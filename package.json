@@ -12,7 +12,8 @@
     "provenance": "node tools/build_provenance.mjs",
     "provenance:check": "node scripts/check_provenance.mjs",
     "data:verify": "node tools/build_data.mjs --check && node tools/build_provenance.mjs --check && node scripts/check_provenance.mjs",
-    "skill:install": "node tools/install.mjs"
+    "skill:install": "node tools/install.mjs",
+    "plugins": "node tools/build_plugins.mjs ."
   },
   "engines": {
     "node": ">=18"

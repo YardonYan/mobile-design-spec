@@ -1,0 +1,18 @@
+{
+  "name": "mobile-design-spec",
+  "version": "1.0.0",
+  "description": "把 iOS、Android、HarmonyOS、微信小程序、H5 五套移动端尺寸规范落到代码，并覆盖平板、折叠屏、桌面、车机与大屏等扩展形态。用于编写或修改移动端与响应式页面 (CSS/WXSS/SCSS/HTML/SwiftUI/Jetpack Compose/ArkTS .ets/Android XML)、逐机型查询屏幕参数与安全区高度、适配 iPad 与 macOS 和 Chromebook 和 tvOS 与 visionO...",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/mobile-design-spec",
+  "repository": "https://github.com/YardonYan/mobile-design-spec",
+  "category": "skill",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "mobile-design-spec"
+  ]
+}
