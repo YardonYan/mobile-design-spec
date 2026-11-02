@@ -569,6 +569,14 @@ You can also override a single platform's baseline with `--ios-width`, `--androi
 
 The lint is heuristic — it infers intent from selector names, so unconventional naming slips through, and it makes no visual judgement at all (it cannot tell whether spacing "feels" right). In those cases treat its output as a starting point and rely on manual review.
 
+### The page scrolls sideways on narrow screens while every component fits
+
+Components measure fine; the overflow comes from composite elements such as the header, where account text, logo and action buttons exceed the available width together. Locate it by comparing element boundaries, then tighten spacing or collapse text at the relevant breakpoint. Hiding the overflow hides the buttons with it.
+
+### Asserting right after switching to reduced motion reads the old state
+
+Switching `prefers-reduced-motion` and asserting immediately reports the pre-switch state, which looks like the page failed to adapt. The UI updates through a media query change event, and that takes a tick or two. Poll for the observable condition instead of adding a fixed delay, and do not rewrite correct media query logic to fix a race in the test. Cover system theme, reduced motion and dark mode alike.
+
 ## Contributing
 
 Good reasons to open an issue or PR:
